@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:friend_finder/login_page.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:appwrite/appwrite.dart';
 
@@ -133,9 +134,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(
-        title: 'Geolocator',
-      ),
+      // home: const MyHomePage(
+      //   title: 'Geolocator',
+      // ),
+      home: LoginPage(),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:abhishek_s_application1/core/app_export.dart';
+import 'package:friend_finder/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: must_be_immutable
