@@ -1,3 +1,4 @@
+import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
 import 'package:appwrite/appwrite.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AuthController {
   late Client client;
   late Account account;
+  late User AppwriteUser;
   AuthController() {
     client = Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
@@ -22,10 +24,15 @@ class AuthController {
     } catch (PlatformException) {
       print(PlatformException);
     }
-    Future result = account.get();
+    AppwriteUser = await account.get();
+    print(AppwriteUser.name);
+  }
+
+  Future<void> _performLogout() async {
+    // Go to OAuth provider login page
+    Future result = account.deleteSessions();
     await result;
     print(result);
-    // Additional logic after OAuth2 session creation if needed
   }
 }
 
@@ -50,6 +57,13 @@ class LoginPage extends StatelessWidget {
                 iconSize: 50,
                 onPressed: () async {
                   await controller._performOAuth2Login();
+                },
+              ),
+              IconButton(
+                icon: Image.asset('assets/login.png'),
+                iconSize: 50,
+                onPressed: () async {
+                  await controller._performLogout();
                 },
               ),
             ],

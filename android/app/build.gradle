@@ -49,9 +49,6 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders += [
-         'appAuthRedirectScheme': 'com.example.friend_finder' // Add this also using your application ID URI as the based for all your derived URi
- ]
     }
 
     buildTypes {
