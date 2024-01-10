@@ -15,8 +15,16 @@ class AuthController {
 
   Future<void> _performOAuth2Login() async {
     // Go to OAuth provider login page
-    await account.createOAuth2Session(
-        provider: 'microsoft', success: "", failure: "", scopes: []);
+    try {
+      await account.createOAuth2Session(
+        provider: 'microsoft',
+      );
+    } catch (PlatformException) {
+      print(PlatformException);
+    }
+    Future result = account.get();
+    await result;
+    print(result);
     // Additional logic after OAuth2 session creation if needed
   }
 }
