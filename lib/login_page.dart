@@ -30,7 +30,9 @@ class AuthController {
 
   Future<void> _performLogout() async {
     // Go to OAuth provider login page
-    Future result = account.deleteSessions();
+    Future result = account.deleteSession(
+      sessionId: 'current',
+    );
     await result;
     print(result);
   }
